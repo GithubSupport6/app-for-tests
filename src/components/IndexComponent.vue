@@ -1,6 +1,6 @@
 <template>
   <div class="test-panel">
-  <div class="container">
+  <div class="test-container" v-if="!isFinished">
     <div class = "header">
       {{currentQuestion.title}}
     </div>
@@ -15,8 +15,16 @@
     <div class="submit">
       <input type="submit" value="Да!" v-on:click="nextQuestion(selectedAnswer)">
     </div>
-    <div class="result" v-if="isFinished">
-      {{this.calculateResult.name}}
+  </div>
+  <div class="result" v-if="isFinished">
+    <div class="image">
+      <img :src="require('@/assets/img/' + calculatedResult.image)"/>
+    </div>
+    <div class="name">
+      {{calculatedResult.name}}
+    </div>
+    <div class="description">
+      {{calculatedResult.description}}
     </div>
   </div>
   </div>
@@ -43,17 +51,24 @@ export default {
     currentAnswers(){
       return this.questions[this.currentIndex].answers
     },
-    calculateResult() {
-      let max = Math.max(this.currentResults)
+    calculatedResult() {
+      let max = Math.max(...this.currentResults)
       let indexesOfWinners = [];
-      for (let i = 0;i<this.currentResults;i++){
+      for (let i = 0;i<this.currentResults.length;i++){
         if (this.currentResults[i] == max){
-          indexesOfWinners+=i
+          indexesOfWinners.push(i)
         }
       }
-      let winnerIndex = Math.random() + indexesOfWinners.length
+      let winnersCount = indexesOfWinners.length
+      let winnerIndex = winnersCount > 1 ?
+        Math.floor(Math.random() * indexesOfWinners.length) :
+        indexesOfWinners[0]
       return this.results[winnerIndex]
+    },
+    getImgUrl(image){
+      return require("../assets/img/" + image)
     }
+
   },
   methods: {
     calculateStep(mask){

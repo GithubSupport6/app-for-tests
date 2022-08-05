@@ -54,18 +54,17 @@ let questionData = [
     ]
   },
 ]
-
 let questionResults = [
   {
     id: 0,
     name: "Гоша",
-    picture: "gosha.png",
+    image: "gosha.jpg",
     description: "Gosha description"
   },
   {
     id: 1,
     name: "Гриша",
-    picture: "grisha.png",
+    image: "grisha.jpg",
     description: "Grisha description"
   }
 ]
@@ -85,7 +84,13 @@ export default {
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <div class="header">
+    <img id="logo" alt="logo" src="./assets/logo.jpg" width="150" height="150"> 
+    <div class="header-description">
+      Тест: кто ты из чята настолок
+    </div>
+  </div>
+  
   <IndexComponent :questions="this.questions" :results="this.results"/>
 </template>
 
@@ -97,5 +102,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#logo {
+  display: inline-block;
 }
 </style>
