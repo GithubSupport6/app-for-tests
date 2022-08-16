@@ -95,8 +95,10 @@ export default {
 </template>
 
 <style>
+body {
+  background-color: #ffc1c1;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -106,4 +108,16 @@ export default {
 #logo {
   display: inline-block;
 }
+h1,h2,h3,h4,p {
+  font-family: 'Diamond Girl', Vollkorn, sans-serif;
+  color: #fff;
+}
+.answer-label{
+  font-family: 'Diamond Girl', Vollkorn, sans-serif;
+  color: #fff;
+}
+@font-face {
+ font-family: "Diamond Girl";
+ src: url("@/assets/fonts/DiamondGirl.otf") format("truetype")
+ }
 </style>

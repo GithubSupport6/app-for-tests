@@ -2,13 +2,13 @@
   <div class="test-panel">
   <div class="test-container" v-if="!isFinished">
     <div class = "header">
-      {{currentQuestion.title}}
+      <h1>{{currentQuestion.title}}</h1>
     </div>
     <div class="questions">
       <ul>
         <li v-for="answer in currentAnswers" v-bind:key="answer">
           <input type='radio' name="answersRadio" v-on:click="selectedAnswer = answer">
-          <label> {{answer.title}}</label>
+          <label class="answer-label"> {{answer.title}}</label>
         </li>
       </ul>
     </div>
@@ -21,10 +21,10 @@
       <img :src="require('@/assets/img/' + calculatedResult.image)"/>
     </div>
     <div class="name">
-      {{calculatedResult.name}}
+      <h1>{{calculatedResult.name}}</h1>
     </div>
     <div class="description">
-      {{calculatedResult.description}}
+      <h2>{{calculatedResult.description}}</h2>
     </div>
   </div>
   </div>
